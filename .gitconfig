@@ -1,3 +1,5 @@
 [user]
 	email = jononor@gmail.com
 	name = Jon Nordby
+[rebase]
+	autosquash = true
