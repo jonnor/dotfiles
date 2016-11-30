@@ -3,3 +3,7 @@
 	name = Jon Nordby
 [rebase]
 	autosquash = true
+[fetch]
+	prune = true
+[color]
+	ui = auto
