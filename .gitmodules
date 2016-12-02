@@ -1,0 +1,3 @@
+[submodule ".local/share/gtksourceview-3.0/language-specs/gedit-coffeescript"]
+	path = .local/share/gtksourceview-3.0/language-specs/gedit-coffeescript
+	url = https://github.com/wavded/gedit-coffeescript
