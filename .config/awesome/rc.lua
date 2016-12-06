@@ -216,11 +216,19 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
         function ()
-            awful.client.focus.history.previous()
+            awful.client.focus.byidx( 1)
             if client.focus then
                 client.focus:raise()
             end
         end),
+    awful.key({ modkey, "Shift" }, "Tab",
+        function ()
+            awful.client.focus.byidx(-1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
+
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
