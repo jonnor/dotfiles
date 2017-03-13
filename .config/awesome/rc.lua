@@ -244,8 +244,14 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
+    -- Music controls
+    awful.key({ "Control", "Mod1" }, "/", function () awful.util.spawn("amixer sset Master toggle") end),
+    awful.key({ "Control", "Mod1" }, ".", function () awful.util.spawn("amixer sset Master 5%+") end),
+    awful.key({ "Control", "Mod1" }, ",", function () awful.util.spawn("amixer sset Master 5%-") end),
+
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
+
 )
 
 clientkeys = awful.util.table.join(
