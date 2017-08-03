@@ -1,0 +1,3 @@
+# Always show line numbers
+set linenumbers
+set const
