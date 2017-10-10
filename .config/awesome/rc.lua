@@ -250,8 +250,10 @@ globalkeys = awful.util.table.join(
     awful.key({ "Control", "Mod1" }, ",", function () awful.util.spawn("amixer sset Master 5%-") end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
+    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
+    -- Locking screen
+    awful.key({ modkey,           }, "x", function () awful.util.spawn("xlock") end)
 )
 
 clientkeys = awful.util.table.join(
