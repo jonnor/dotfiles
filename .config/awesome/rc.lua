@@ -253,7 +253,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
     -- Locking screen
-    awful.key({ modkey,           }, "x", function () awful.util.spawn("xlock") end)
+    awful.key({ modkey,           }, "x", function () awful.util.spawn("xlock -mode blank -startCmd 'xbacklight -set 1' -endCmd 'xbacklight -set 50'") end)
 )
 
 clientkeys = awful.util.table.join(
