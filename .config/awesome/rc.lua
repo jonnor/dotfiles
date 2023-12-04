@@ -291,8 +291,15 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        )
-    --awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
+    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
+    awful.key({ modkey,           }, "n",      function (c) c.ontop = not c.ontop            end),
+    awful.key({ modkey, "Shift" }, "m", -- or any command of your choice
+        function (c)
+            c.maximized_horizontal = false
+            c.maximized_vertical   = false
+            c.maximized            = false
+            c.floating             = false
+        end)
 )
 
 -- Bind all key numbers to tags.
@@ -359,6 +366,8 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
+                     maximized_vertical   = false,
+                     maximized_horizontal = false,
                      buttons = clientbuttons } },
     { rule = { class = "pinentry" },
       properties = { floating = true } }
