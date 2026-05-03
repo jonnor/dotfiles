@@ -14,13 +14,17 @@ RUN git clone https://github.com/micropython/micropython.git && \
     cd micropython && \
     make -C mpy-cross && \
     make -C ports/unix submodules && \
-    make -C ports/unix
-
-ENV PATH="/micropython/ports/unix/build-standard:$PATH"
+    make -C ports/unix && \
+    cp ports/unix/build-standard/micropython /usr/bin/micropython
 
 # Setup Python dependencies
 COPY requirements.txt requirements.dev.txt .
 RUN pip3 install --break-system-packages -r requirements.txt -r requirements.dev.txt
+
+# Setup ARM toolchain and qemu
+RUN apt-get update && apt-get install -y \
+    gcc-arm-none-eabi binutils-arm-none-eabi qemu-system-arm \
+    && rm -rf /var/lib/apt/lists/*
 
 # Setup tmux and pi coding agent
 # needs ripgrep and fd

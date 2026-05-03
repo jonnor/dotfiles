@@ -1,5 +1,7 @@
 #/bin/bash -xe
 
+set -euxo pipefail
+
 DOCKER_TAG=emlearn-micropython-dev
 WORKSPACE_DIR=/home/jon/projects/emlearn-micropython
 
