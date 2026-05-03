@@ -46,7 +46,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
 
 RUN npm install -g @mariozechner/pi-coding-agent
 
-# Expected to be mounted
+# Configure tmux
+COPY tmux.conf /config/tmux.conf
+
+# Project directory. Expected to be mounted
 WORKDIR /workspace
+
+# Custom entrypoint, allows automatic setup on start
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["tmux"]

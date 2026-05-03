@@ -15,7 +15,10 @@ fi
 # rebuild docker image (if needed)
 cd $DIR
 cp $WORKSPACE_DIR/requirements*.txt ./
-docker build . -t $DOCKER_TAG
+podman build . -t $DOCKER_TAG
 
 # run the container
-exec docker run -it -u $(id -u):$(id -g) -v $WORKSPACE_DIR:/workspace -e OPENROUTER_API_KEY $DOCKER_TAG
+exec podman run -it --userns=keep-id \
+    -v $WORKSPACE_DIR:/workspace \
+    -e OPENROUTER_API_KEY \
+    $DOCKER_TAG
