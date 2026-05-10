@@ -1,0 +1,23 @@
+{
+  "providers": {
+    "jon-workstation": {
+      "baseUrl": "http://jon-workstation.local:8080/v1",
+      "api": "openai-completions",
+      "apiKey": "LLAMA_API_KEY_JON_WORKSTATION",
+      "models": [
+        {
+          "id": "qwen3.6-35b-a3b-reasoning",
+          "input": [ "text" ],
+          "contextWindow": 12800,
+          "reasoning": true
+        },
+        {
+          "id": "qwen3.6-35b-a3b-instruct",
+          "input": [ "text" ],
+          "contextWindow": 12800,
+          "reasoning": false
+        }
+      ]
+    }
+  }
+}

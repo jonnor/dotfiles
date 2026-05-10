@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y \
     tmux \
     curl \
+    dnsutils \
     ripgrep \
     fd-find \
     && rm -rf /var/lib/apt/lists/*
@@ -48,9 +49,14 @@ RUN npm install -g @mariozechner/pi-coding-agent
 
 # Configure tmux
 COPY tmux.conf /config/tmux.conf
+COPY pi/agent /config/pi/agent
 
 # Project directory. Expected to be mounted
 WORKDIR /workspace
+
+# Prefer IPv4 over IPV6 for DNS lookups
+# Should fix mDNS lookups being slow (took 5 seconds)
+RUN echo "precedence ::ffff:0:0/96 100" >> /etc/gai.conf
 
 # Custom entrypoint, allows automatic setup on start
 COPY entrypoint.sh /entrypoint.sh
